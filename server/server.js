@@ -12,7 +12,8 @@ app.use(cors())
 app.get("/customers", async function(req, res) {
     try {
         const customers = await database.getAllCustomers();
-        res.send(customers).statusCode(200);
+        res.status(200);
+        res.send(customers);
     } catch (e) {
         console.log(e);
         res.sendStatus(500);
@@ -23,7 +24,8 @@ app.get("/customers/:id", async function(req, res) {
     try {
         const customer = await database.getCustomer(req.params.id);
         if (customer) {
-            res.send(customer).statusCode(200);
+            res.status(200)
+            res.send(customer);
         } else {
             res.send("Customer not found").statusCode(404);
         }
@@ -33,14 +35,28 @@ app.get("/customers/:id", async function(req, res) {
     }
 })
 
-app.delete("/customers/:id", function(req, res) {
-    
+app.delete("/customers/:id", async function(req, res) {
+    try {
+        await database.deleteCustomer(req.params.id);
+        res.sendStatus(204);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
 })
 
 app.use(express.json());
 
-app.post("/customers", function(req, res) {
+app.post("/customers", async function(req, res) {
+    const customer = req.body;
 
+    try {
+        await database.addCustomer(customer);
+        res.sendStatus(201);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
 });
 
 app.put("/customers/:id", function(req, res) {

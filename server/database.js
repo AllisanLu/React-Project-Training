@@ -59,8 +59,7 @@ async function deleteCustomer(id) {
         const db = await connection.db("Training");
         const collection = await db.collection("Customers");
 
-        const customers = await collection.findOne({"_id": new ObjectId(id)});
-        return customers;
+        await collection.deleteOne({"_id": new ObjectId(id)});
     } catch (err) {
         console.log(err.stack);
     }
@@ -69,4 +68,20 @@ async function deleteCustomer(id) {
     }
 }
 
-export default { testConnection, getAllCustomers, getCustomer };
+async function addCustomer(customer) {
+    try {
+        const connection = await client.connect();
+        const db = await connection.db("Training");
+        const collection = await db.collection("Customers");
+
+        await collection.insertOne(customer);
+    } catch (err) {
+        console.log(err.stack);
+    }
+    finally {
+        await client.close();
+    }
+}
+
+export default { testConnection, getAllCustomers, getCustomer, 
+    deleteCustomer, addCustomer };
