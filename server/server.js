@@ -27,7 +27,8 @@ app.get("/customers/:id", async function(req, res) {
             res.status(200)
             res.send(customer);
         } else {
-            res.send("Customer not found").statusCode(404);
+            res.status(404);
+            res.send("Customer not found");
         }
     } catch (e) {
         console.log(e);
@@ -59,8 +60,16 @@ app.post("/customers", async function(req, res) {
     }
 });
 
-app.put("/customers/:id", function(req, res) {
+app.put("/customers/:id", async function(req, res) {
+    const customer = req.body;
 
+    try {
+        await database.updateCustomer(req.params.id, customer);
+        res.sendStatus(200);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
 })
 
 app.listen(process.env.PORT, () => {
