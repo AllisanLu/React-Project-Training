@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
-import data from "../mock_data/data.json";
-const CustomerList = () => {
+
+const CustomerList = ({ data, onCustomerClick }) => {
   return (
     <div
       style={{
@@ -23,12 +23,7 @@ const CustomerList = () => {
         <tbody>
           {data.map((cust, id) => {
             return (
-              <tr
-                onClick={() => {
-                  console.log(cust._id);
-                }}
-                key={id}
-              >
+              <tr onClick={() => onCustomerClick(cust._id)} key={id}>
                 <td>{cust.name}</td>
                 <td>{cust.email}</td>
                 <td>{cust.password}</td>
