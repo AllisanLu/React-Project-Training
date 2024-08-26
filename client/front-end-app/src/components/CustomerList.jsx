@@ -23,7 +23,7 @@ const CustomerList = ({ data, onCustomerClick }) => {
         <tbody>
           {data.map((cust, id) => {
             return (
-              <tr onClick={() => onCustomerClick(cust._id)} key={id}>
+              <tr onClick={() => onCustomerClick(cust)} key={id}>
                 <td>{cust.name}</td>
                 <td>{cust.email}</td>
                 <td>{cust.password}</td>

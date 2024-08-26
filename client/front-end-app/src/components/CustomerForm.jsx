@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 const CustomerForm = ({ formData }) => {
-  const [name, setName] = useState(formData.name || "");
-  const [email, setEmail] = useState(formData.email || "");
-  const [password, setPassword] = useState(formData.password || "");
+  console.log({ formData });
+  const [name, setName] = useState(formData?.name);
+  const [email, setEmail] = useState(formData?.email);
+  const [password, setPassword] = useState(formData?.password);
 
+  useEffect(() => {
+    setName(formData?.name);
+    setEmail(formData?.email);
+    setPassword(formData?.password);
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name, email, password);

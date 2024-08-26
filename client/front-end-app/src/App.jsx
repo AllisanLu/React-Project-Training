@@ -3,11 +3,9 @@ import CustomerForm from "./components/CustomerForm";
 import data from "./mock_data/data.json";
 import { useState } from "react";
 function App() {
-  const [custData, setCustData] = useState({});
-  const handleCustomer = (id) => {
-    console.log(id);
-    setCustData(data.find((data) => data._id === id));
-    console.log(custData.name);
+  const [custData, setCustData] = useState(undefined);
+  const handleCustomer = (cust) => {
+    setCustData(cust);
   };
   return (
     <>
