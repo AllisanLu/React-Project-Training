@@ -8,35 +8,37 @@ const CustomerList = ({ customers, selectedCustomer, setSelectedCustomer }) => {
   };
   return (
     <div className="CustomerList">
-      <h3>Customer List</h3>
-      <table className="table table-striped">
-        <thead className="thead-dark">
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Pass</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customers.map((cust, id) => {
-            return (
-              <tr
-                onClick={() => handleSelectedCustomer(cust)}
-                className={
-                  selectedCustomer?._id === cust?._id
-                    ? "selected-customer"
-                    : null
-                }
-                key={id}
-              >
-                <td>{cust.name}</td>
-                <td>{cust.email}</td>
-                <td>{cust.password}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h3>Customers</h3>
+      <div className="table-responsive">
+        <table className="table table-striped">
+          <thead className="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Pass</th>
+            </tr>
+          </thead>
+          <tbody>
+            {customers.map((cust, id) => {
+              return (
+                <tr
+                  onClick={() => handleSelectedCustomer(cust)}
+                  className={
+                    selectedCustomer?._id === cust?._id
+                      ? "selected-customer"
+                      : null
+                  }
+                  key={id}
+                >
+                  <td>{cust.name}</td>
+                  <td>{cust.email}</td>
+                  <td>{cust.password}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

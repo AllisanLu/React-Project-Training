@@ -2,6 +2,9 @@ import CustomerList from "./components/CustomerList";
 import CustomerForm from "./components/CustomerForm";
 import { getCustomers } from "./services/CustomerServices";
 import { useEffect, useState } from "react";
+
+import "./App.css"
+
 function App() {
   const [selectedCustomer, setSelectedCustomer] = useState();
   const [customers, setCustomers] = useState([]);
@@ -12,7 +15,7 @@ function App() {
       .then((data) => setCustomers(data));
   }, []);
   return (
-    <>
+    <div className="centered">
       <CustomerList
         customers={customers}
         setSelectedCustomer={setSelectedCustomer}
@@ -23,7 +26,7 @@ function App() {
         setSelectedCustomer={setSelectedCustomer}
         setCustomers={setCustomers}
       />
-    </>
+    </div>
   );
 }
 

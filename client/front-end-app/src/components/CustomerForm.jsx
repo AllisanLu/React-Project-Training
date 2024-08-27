@@ -43,8 +43,8 @@ const CustomerForm = ({
   };
   return (
     <div className="CustomerForm">
-      {selectedCustomer ? <h3>Update</h3> : <h3>Add</h3>}
       <form onSubmit={handleSubmit}>
+        {selectedCustomer ? <h3>Update {selectedCustomer.name}</h3> : <h3>Add</h3>}
         <div className="mb-3 form-group" controlId="Name">
           <label htmlFor="name">Name</label>
           <input
@@ -90,7 +90,7 @@ const CustomerForm = ({
               Delete
             </button>
           ) : null}
-          <button className="btn btn-warning" onClick={handleCancel}>
+          <button className="btn btn-secondary" onClick={handleCancel}>
             Cancel
           </button>
         </div>

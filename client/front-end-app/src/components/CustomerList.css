@@ -1,8 +1,11 @@
 .CustomerList {
   background-color: lightgray;
   border-style: solid;
-  width: 30%;
-  margin: 10px;
+  border-width: 3px;
+  border-color: darkgray;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
   padding: 10px;
 
   & .selected-customer {

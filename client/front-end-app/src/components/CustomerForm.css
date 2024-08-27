@@ -1,10 +1,23 @@
 .CustomerForm {
-
     background-color: lightgray;
     border-style: solid;
-    width: 30%;
-    margin: 10px;
+    border-width: 3px;
+    border-color: darkgray;
+    border-radius: 10px;
+    width: 50%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     padding: 10px;
+
+    text-align: left;
+
+  & h3 {
+    text-align: center;
+  }
 
   & label {
     color: black;
@@ -12,7 +25,7 @@
 
   & form {
     width: 80%;
-    margin-left: 5%
+    margin: auto;
   }
    & .button-group {
      display: flex;
