@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+
 const CustomerForm = ({ formData }) => {
   console.log({ formData });
   const [name, setName] = useState(formData?.name);
@@ -27,20 +26,20 @@ const CustomerForm = ({ formData }) => {
       }}
     >
       <h3>Add</h3>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3" controlId="Name">
+          <label>Name</label>
+          <input
             placeholder="Enter name"
             value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="Email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
+        </div>
+        <div className="mb-3" controlId="Email">
+          <label>Email</label>
+          <input
             type="email"
             value={email}
             placeholder="Enter email"
@@ -48,10 +47,10 @@ const CustomerForm = ({ formData }) => {
               setEmail(e.target.value);
             }}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="Password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        </div>
+        <div className="mb-3" controlId="Password">
+          <label>Password</label>
+          <input
             type="password"
             value={password}
             placeholder="Password"
@@ -59,19 +58,19 @@ const CustomerForm = ({ formData }) => {
               setPassword(e.target.value);
             }}
           />
-        </Form.Group>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-          <Button variant="primary" type="submit">
-            Delete
-          </Button>
-          <Button variant="primary" type="submit">
-            Cancel
-          </Button>
         </div>
-      </Form>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <button variant="primary" type="submit">
+            Submit
+          </button>
+          <button variant="primary" type="submit">
+            Delete
+          </button>
+          <button variant="primary" type="submit">
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import Table from "react-bootstrap/Table";
-
 const CustomerList = ({ data, onCustomerClick }) => {
   return (
     <div
@@ -12,7 +10,7 @@ const CustomerList = ({ data, onCustomerClick }) => {
       }}
     >
       <h3>Customer List</h3>
-      <Table striped bordered hover style={{ width: "99%" }}>
+      <table style={{ width: "99%" }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -31,7 +29,7 @@ const CustomerList = ({ data, onCustomerClick }) => {
             );
           })}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };
