@@ -1,0 +1,21 @@
+.CustomerForm {
+
+  background-color: lightgrey;
+  border-style: solid;
+  width: 30%;
+  margin: 10;
+  padding: 10;
+
+  & label {
+    color: blue;
+  }
+
+  & #buttonGroup {
+    display: flex;
+    justify-content: space-between;
+
+    & button {
+      background-color: purple;
+    }
+  }
+}

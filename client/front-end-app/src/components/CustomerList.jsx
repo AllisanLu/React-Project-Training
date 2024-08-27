@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import Table from "react-bootstrap/Table";
 
-const CustomerList = ({ data, onCustomerClick }) => {
+const CustomerList = ({ customers, setCustomer }) => {
   return (
     <div
       style={{
@@ -21,9 +22,9 @@ const CustomerList = ({ data, onCustomerClick }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((cust, id) => {
+          {customers.map((cust, id) => {
             return (
-              <tr onClick={() => onCustomerClick(cust)} key={id}>
+              <tr onClick={() => setCustomer(cust)} key={id}>
                 <td>{cust.name}</td>
                 <td>{cust.email}</td>
                 <td>{cust.password}</td>
