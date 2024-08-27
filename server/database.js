@@ -40,8 +40,23 @@ async function getCustomer(id) {
     const db = await connection.db("Training");
     const collection = await db.collection("Customers");
 
-    const customers = await collection.findOne({ _id: new ObjectId(id) });
-    return customers;
+    const customer = await collection.findOne({ _id: new ObjectId(id) });
+    return customer;
+  } catch (err) {
+    console.log(err.stack);
+  } finally {
+    await client.close();
+  }
+}
+
+async function getCustomerByEmail(email) {
+  try {
+    const connection = await client.connect();
+    const db = await connection.db("Training");
+    const collection = await db.collection("Customers");
+
+    const customer = await collection.findOne({ email: email });
+    return customer;
   } catch (err) {
     console.log(err.stack);
   } finally {
@@ -114,6 +129,7 @@ export default {
   testConnection,
   getAllCustomers,
   getCustomer,
+  getCustomerByEmail,
   deleteCustomer,
   addCustomer,
   updateCustomer,

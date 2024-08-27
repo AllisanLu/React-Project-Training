@@ -51,6 +51,17 @@ app.use(express.json());
 app.post("/customers", async function (req, res) {
   const customer = req.body;
 
+  if (customer.email) {
+    const check = await database.getCustomerByEmail(customer.email);
+    if (check) {
+      res.sendStatus(409);
+      return;
+    }
+  } else {
+    res.sendStatus(400);
+    return;
+  }
+
   try {
     await database.addCustomer(customer);
     res.sendStatus(201);
