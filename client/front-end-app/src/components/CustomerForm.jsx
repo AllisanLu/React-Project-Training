@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import {
-  addCustomer,
-  deleteCustomer,
-  getCustomers,
-  updateCustomer,
-} from "../services/CustomerServices";
+import CustomerServices from "../services/CustomerServices";
 import "./CustomerForm.css";
 
+const { getCustomers, addCustomer, deleteCustomer } = CustomerServices;
 const CustomerForm = ({
   selectedCustomer,
   setSelectedCustomer,
