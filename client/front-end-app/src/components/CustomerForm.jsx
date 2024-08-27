@@ -1,26 +1,49 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import {
+  addCustomer,
+  deleteCustomer,
+  getCustomers,
+  updateCustomer,
+} from "../services/CustomerServices";
 import "./CustomerForm.css";
 
-const CustomerForm = ({ selectedCustomer, setSelectedCustomer }) => {
+const CustomerForm = ({
+  selectedCustomer,
+  setSelectedCustomer,
+  setCustomers,
+}) => {
   const [customer, setCustomer] = useState(() => selectedCustomer);
   useEffect(() => {
     if (selectedCustomer) setCustomer(selectedCustomer);
     else setCustomer({ name: "", email: "", password: "" });
   }, [selectedCustomer]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(selectedCustomer);
+    if (selectedCustomer) await updateCustomer(customer._id, customer);
+    else await addCustomer(customer);
+    getCustomers()
+      .then((res) => res.json())
+      .then((data) => setCustomers(data));
   };
 
   const handleCancel = () => {
     setCustomer({ name: "", email: "", password: "" });
     setSelectedCustomer();
   };
+
+  const handleDelete = async () => {
+    await deleteCustomer(customer._id);
+    getCustomers()
+      .then((res) => res.json())
+      .then((data) => {
+        setCustomers(data), handleCancel();
+      });
+  };
   return (
     <div className="CustomerForm">
-      <h3>Add</h3>
+      {selectedCustomer ? <h3>Update</h3> : <h3>Add</h3>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3 form-group" controlId="Name">
           <label htmlFor="name">Name</label>
@@ -62,7 +85,11 @@ const CustomerForm = ({ selectedCustomer, setSelectedCustomer }) => {
         </div>
         <div className="button-group">
           <button className="btn btn-success">Submit</button>
-          <button className="btn btn-danger">Delete</button>
+          {selectedCustomer ? (
+            <button className="btn btn-danger" onClick={handleDelete}>
+              Delete
+            </button>
+          ) : null}
           <button className="btn btn-warning" onClick={handleCancel}>
             Cancel
           </button>

@@ -21,6 +21,7 @@ function App() {
       <CustomerForm
         selectedCustomer={selectedCustomer}
         setSelectedCustomer={setSelectedCustomer}
+        setCustomers={setCustomers}
       />
     </>
   );
