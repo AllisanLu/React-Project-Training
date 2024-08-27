@@ -4,8 +4,7 @@ import data from "./mock_data/data.json";
 import { useState } from "react";
 function App() {
   const [customer, setCustomer] = useState(undefined);
-  const [customers, setCustomers] = useState(data)
-  console.log({ customer })
+  const [customers, setCustomers] = useState(data);
   return (
     <>
       <CustomerList customers={customers} setCustomer={setCustomer} />

@@ -5,7 +5,8 @@ import "./CustomerForm.css";
 const CustomerForm = ({ customer: custFromProps }) => {
   const [customer, setCustomer] = useState(() => custFromProps);
   useEffect(() => {
-    setCustomer(custFromProps);
+    if (custFromProps) setCustomer(custFromProps);
+    else setCustomer({ name: "", email: "", password: "" });
   }, [custFromProps]);
   const handleSubmit = (e) => {
     e.preventDefault();

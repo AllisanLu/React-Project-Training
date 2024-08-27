@@ -1,9 +1,20 @@
-import "./CustomerList.css"
+import { useState } from "react";
+import "./CustomerList.css";
 
 const CustomerList = ({ customers, setCustomer }) => {
+  const [selectedCustomer, setSelectedCustomer] = useState();
+
+  const handleSelectedCustomer = (cust) => {
+    if (cust._id === selectedCustomer) {
+      setSelectedCustomer();
+      setCustomer();
+    } else {
+      setSelectedCustomer(cust._id);
+      setCustomer(cust);
+    }
+  };
   return (
-    <div className="CustomerList"
-    >
+    <div className="CustomerList">
       <h3>Customer List</h3>
       <table className="table table-striped">
         <thead className="thead-dark">
@@ -16,7 +27,13 @@ const CustomerList = ({ customers, setCustomer }) => {
         <tbody>
           {customers.map((cust, id) => {
             return (
-              <tr onClick={() => setCustomer(cust)} key={id}>
+              <tr
+                onClick={() => handleSelectedCustomer(cust)}
+                className={
+                  selectedCustomer === cust._id ? "selected-customer" : null
+                }
+                key={id}
+              >
                 <td>{cust.name}</td>
                 <td>{cust.email}</td>
                 <td>{cust.password}</td>
