@@ -1,7 +1,10 @@
 import CustomerList from "./components/CustomerList";
 import CustomerForm from "./components/CustomerForm";
-import { getCustomers } from "./services/CustomerServices";
+import CustomerServices from "./services/CustomerServices";
 import { useEffect, useState } from "react";
+
+const { getCustomers } = CustomerServices;
+
 function App() {
   const [selectedCustomer, setSelectedCustomer] = useState();
   const [customers, setCustomers] = useState([]);
