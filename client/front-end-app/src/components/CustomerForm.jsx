@@ -17,38 +17,38 @@ const CustomerForm = ({ customer: custFromProps }) => {
       <h3>Add</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3 form-group" controlId="Name">
-          <label for="name">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             id="name"
             placeholder="Enter name"
             value={customer?.name}
-            class="form-control"
+            className="form-control"
             onChange={(e) => {
               setCustomer({ ...customer, name: e.target.value });
             }}
           />
         </div>
         <div className="mb-3 form-group" controlId="Email">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             id="email"
             type="email"
             value={customer?.email}
             placeholder="Enter email"
-            class="form-control"
+            className="form-control"
             onChange={(e) => {
               setCustomer({ ...customer, email: e.target.value });
             }}
           />
         </div>
         <div className="mb-3 form-group" controlId="Password">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             id="password"
             type="password"
             value={customer?.password}
             placeholder="Password"
-            class="form-control"
+            className="form-control"
             onChange={(e) => {
               setCustomer({ ...customer, password: e.target.value });
             }}
