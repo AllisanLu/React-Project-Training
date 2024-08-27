@@ -17,13 +17,6 @@ const CustomerForm = ({ formData }) => {
   };
   return (
     <div
-      style={{
-        backgroundColor: "lightgrey",
-        borderStyle: "solid",
-        width: "30%",
-        margin: 10,
-        padding: 10,
-      }}
     >
       <h3>Add</h3>
       <form onSubmit={handleSubmit}>
