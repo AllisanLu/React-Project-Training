@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import './CustomerForm.css';
 
 const CustomerForm = ({ formData }) => {
   console.log({ formData });
@@ -6,34 +8,26 @@ const CustomerForm = ({ formData }) => {
   const [email, setEmail] = useState(formData?.email);
   const [password, setPassword] = useState(formData?.password);
 
+const CustomerForm = ({ customer: custFromProps }) => {
+  const [customer, setCustomer] = useState(() => custFromProps)
   useEffect(() => {
-    setName(formData?.name);
-    setEmail(formData?.email);
-    setPassword(formData?.password);
-  });
+    setCustomer(custFromProps)
+  }, [custFromProps]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, password);
+    console.log(customer);
   };
   return (
-    <div
-      style={{
-        backgroundColor: "lightgrey",
-        borderStyle: "solid",
-        width: "30%",
-        margin: 10,
-        padding: 10,
-      }}
-    >
+    <div className="CustomerForm">
       <h3>Add</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3" controlId="Name">
           <label>Name</label>
           <input
             placeholder="Enter name"
-            value={name}
+            value={customer?.name}
             onChange={(e) => {
-              setName(e.target.value);
+              setCustomer({ ...customer, name: e.target.value });
             }}
           />
         </div>
@@ -41,10 +35,10 @@ const CustomerForm = ({ formData }) => {
           <label>Email</label>
           <input
             type="email"
-            value={email}
+            value={customer?.email}
             placeholder="Enter email"
             onChange={(e) => {
-              setEmail(e.target.value);
+              setCustomer({ ...customer, email: e.target.value });
             }}
           />
         </div>
@@ -52,10 +46,10 @@ const CustomerForm = ({ formData }) => {
           <label>Password</label>
           <input
             type="password"
-            value={password}
+            value={customer?.password}
             placeholder="Password"
             onChange={(e) => {
-              setPassword(e.target.value);
+              setCustomer({ ...customer, password: e.target.value });
             }}
           />
         </div>
