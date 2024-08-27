@@ -11,7 +11,7 @@ const CustomerList = ({ customers, setCustomer }) => {
       }}
     >
       <h3>Customer List</h3>
-      <table style={{ width: "99%" }}>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>
