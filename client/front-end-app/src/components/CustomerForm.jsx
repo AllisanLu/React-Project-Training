@@ -2,15 +2,21 @@
 import { useEffect, useState } from "react";
 import "./CustomerForm.css";
 
-const CustomerForm = ({ customer: custFromProps }) => {
-  const [customer, setCustomer] = useState(() => custFromProps);
+const CustomerForm = ({ selectedCustomer, setSelectedCustomer }) => {
+  const [customer, setCustomer] = useState(() => selectedCustomer);
   useEffect(() => {
-    if (custFromProps) setCustomer(custFromProps);
+    if (selectedCustomer) setCustomer(selectedCustomer);
     else setCustomer({ name: "", email: "", password: "" });
-  }, [custFromProps]);
+  }, [selectedCustomer]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(customer);
+    console.log(selectedCustomer);
+  };
+
+  const handleCancel = () => {
+    setCustomer({ name: "", email: "", password: "" });
+    setSelectedCustomer();
   };
   return (
     <div className="CustomerForm">
@@ -55,13 +61,9 @@ const CustomerForm = ({ customer: custFromProps }) => {
           />
         </div>
         <div className="button-group">
-          <button className="btn btn-success" type="submit">
-            Submit
-          </button>
-          <button className="btn btn-danger" type="submit">
-            Delete
-          </button>
-          <button className="btn btn-warning" type="submit">
+          <button className="btn btn-success">Submit</button>
+          <button className="btn btn-danger">Delete</button>
+          <button className="btn btn-warning" onClick={handleCancel}>
             Cancel
           </button>
         </div>

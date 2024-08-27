@@ -3,7 +3,7 @@ import CustomerForm from "./components/CustomerForm";
 import { getCustomers } from "./services/CustomerServices";
 import { useEffect, useState } from "react";
 function App() {
-  const [customer, setCustomer] = useState(undefined);
+  const [selectedCustomer, setSelectedCustomer] = useState();
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -13,8 +13,15 @@ function App() {
   }, []);
   return (
     <>
-      <CustomerList customers={customers} setCustomer={setCustomer} />
-      <CustomerForm customer={customer} />
+      <CustomerList
+        customers={customers}
+        setSelectedCustomer={setSelectedCustomer}
+        selectedCustomer={selectedCustomer}
+      />
+      <CustomerForm
+        selectedCustomer={selectedCustomer}
+        setSelectedCustomer={setSelectedCustomer}
+      />
     </>
   );
 }

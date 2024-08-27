@@ -1,17 +1,10 @@
 import { useState } from "react";
 import "./CustomerList.css";
 
-const CustomerList = ({ customers, setCustomer }) => {
-  const [selectedCustomer, setSelectedCustomer] = useState();
-
+const CustomerList = ({ customers, selectedCustomer, setSelectedCustomer }) => {
   const handleSelectedCustomer = (cust) => {
-    if (cust._id === selectedCustomer) {
-      setSelectedCustomer();
-      setCustomer();
-    } else {
-      setSelectedCustomer(cust._id);
-      setCustomer(cust);
-    }
+    if (cust?._id === selectedCustomer?._id) setSelectedCustomer();
+    else setSelectedCustomer(cust);
   };
   return (
     <div className="CustomerList">
@@ -30,7 +23,9 @@ const CustomerList = ({ customers, setCustomer }) => {
               <tr
                 onClick={() => handleSelectedCustomer(cust)}
                 className={
-                  selectedCustomer === cust._id ? "selected-customer" : null
+                  selectedCustomer?._id === cust?._id
+                    ? "selected-customer"
+                    : null
                 }
                 key={id}
               >
