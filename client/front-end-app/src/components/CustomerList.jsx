@@ -1,18 +1,12 @@
+import "./CustomerList.css"
 
 const CustomerList = ({ customers, setCustomer }) => {
   return (
-    <div
-      style={{
-        backgroundColor: "lightgrey",
-        borderStyle: "solid",
-        width: "30%",
-        margin: 10,
-        padding: 10,
-      }}
+    <div className="CustomerList"
     >
       <h3>Customer List</h3>
-      <table className="table">
-        <thead>
+      <table className="table table-striped">
+        <thead className="thead-dark">
           <tr>
             <th>Name</th>
             <th>Email</th>
