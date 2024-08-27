@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-import Table from "react-bootstrap/Table";
 
 const CustomerList = ({ customers, setCustomer }) => {
   return (
@@ -13,7 +11,7 @@ const CustomerList = ({ customers, setCustomer }) => {
       }}
     >
       <h3>Customer List</h3>
-      <Table striped bordered hover style={{ width: "99%" }}>
+      <table style={{ width: "99%" }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -32,7 +30,7 @@ const CustomerList = ({ customers, setCustomer }) => {
             );
           })}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };

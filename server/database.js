@@ -83,9 +83,11 @@ async function updateCustomer(id, customer) {
     const db = await connection.db("Training");
     const collection = await db.collection("Customers");
 
-    const dbcustomer = await collection.find({
-      _id: new ObjectId(id),
-    }).toArray();
+    const dbcustomer = await collection
+      .find({
+        _id: new ObjectId(id),
+      })
+      .toArray();
 
     if (dbcustomer.length > 0) {
       return await collection.updateOne(
@@ -99,7 +101,7 @@ async function updateCustomer(id, customer) {
         }
       );
     } else {
-        return await collection.insertOne({ ... customer, "_id": new ObjectId(id)});
+      return await collection.insertOne({ ...customer, _id: new ObjectId(id) });
     }
   } catch (err) {
     console.log(err.stack);
