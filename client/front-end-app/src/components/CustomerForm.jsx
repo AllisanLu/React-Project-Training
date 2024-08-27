@@ -60,7 +60,7 @@ const CustomerForm = ({ customer: custFromProps }) => {
           <button className="btn btn-danger" type="submit">
             Delete
           </button>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-warning" type="submit">
             Cancel
           </button>
         </div>
