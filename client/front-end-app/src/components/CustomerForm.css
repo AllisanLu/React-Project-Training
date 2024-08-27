@@ -1,8 +1,8 @@
 .CustomerForm {
-    background-color: lightgray;
+    background-color: #c5dba9;
     border-style: solid;
     border-width: 3px;
-    border-color: darkgray;
+    border-color: #889e6c;
     border-radius: 10px;
     width: 50%;
 
@@ -27,12 +27,12 @@
     width: 80%;
     margin: auto;
   }
-   & .button-group {
-     display: flex;
-     justify-content: space-between;
-   
-     & button {
-       margin: 2px;
-     }
-   }
+  & .button-group {
+    display: flex;
+    justify-content: space-between;
+  
+    & button {
+      margin: 2px;
+    }
+  }
 }

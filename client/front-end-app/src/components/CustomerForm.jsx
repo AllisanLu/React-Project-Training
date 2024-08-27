@@ -19,6 +19,10 @@ const CustomerForm = ({
     e.preventDefault();
     if (selectedCustomer) await updateCustomer(customer._id, customer);
     else await addCustomer(customer);
+
+    setCustomer({ name: "", email: "", password: "" });
+    setSelectedCustomer();
+
     getCustomers()
       .then((res) => res.json())
       .then((data) => setCustomers(data));
@@ -39,7 +43,7 @@ const CustomerForm = ({
   };
   return (
     <div className="CustomerForm">
-      <form onSubmit={handleSubmit}>
+      <form>
         {selectedCustomer ? <h3>Update {selectedCustomer.name}</h3> : <h3>Add</h3>}
         <div className="mb-3 form-group" controlId="Name">
           <label htmlFor="name">Name</label>
@@ -80,7 +84,7 @@ const CustomerForm = ({
           />
         </div>
         <div className="button-group">
-          <button className="btn btn-success">Submit</button>
+          <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
           {selectedCustomer ? (
             <button className="btn btn-danger" onClick={handleDelete}>
               Delete
