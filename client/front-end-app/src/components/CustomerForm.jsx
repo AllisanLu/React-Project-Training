@@ -63,7 +63,7 @@ const CustomerForm = ({
         ) : (
           <h3>Add</h3>
         )}
-        <div className="mb-3 form-group" controlId="Name">
+        <div className="mb-3 form-group">
           <label htmlFor="name">Name</label>
           <input
             id="name"
@@ -73,9 +73,10 @@ const CustomerForm = ({
             onChange={(e) => {
               setCustomer({ ...customer, name: e.target.value });
             }}
+            required
           />
         </div>
-        <div className="mb-3 form-group" controlId="Email">
+        <div className="mb-3 form-group">
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -86,9 +87,10 @@ const CustomerForm = ({
             onChange={(e) => {
               setCustomer({ ...customer, email: e.target.value });
             }}
+            required
           />
         </div>
-        <div className="mb-3 form-group" controlId="Password">
+        <div className="mb-3 form-group">
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -99,6 +101,7 @@ const CustomerForm = ({
             onChange={(e) => {
               setCustomer({ ...customer, password: e.target.value });
             }}
+            required
           />
         </div>
         <div className="button-group">
