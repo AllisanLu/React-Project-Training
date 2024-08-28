@@ -23,11 +23,11 @@ const CustomerList = ({ customers, selectedCustomer, setSelectedCustomer }) => {
               return (
                 <tr
                   onClick={() => handleSelectedCustomer(cust)}
-                  className={
+                  className={`${
                     selectedCustomer?._id === cust?._id
                       ? "selected-customer"
                       : null
-                  }
+                  } click-customer`}
                   key={id}
                 >
                   <td>{cust.name}</td>

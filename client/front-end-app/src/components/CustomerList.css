@@ -11,4 +11,8 @@
   & .selected-customer {
     font-weight: bold;
   }
+
+  & .click-customer {
+    cursor: pointer;
+  }
 }
