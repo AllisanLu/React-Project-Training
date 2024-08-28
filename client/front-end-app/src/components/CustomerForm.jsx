@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import CustomerServices from "../services/CustomerServices";
 import "./CustomerForm.css";
 
-const { getCustomers, addCustomer, deleteCustomer } = CustomerServices;
+const { getCustomers, addCustomer, deleteCustomer, updateCustomer } =
+  CustomerServices;
 const CustomerForm = ({
   selectedCustomer,
   setSelectedCustomer,
@@ -18,7 +19,14 @@ const CustomerForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selectedCustomer) await updateCustomer(customer._id, customer);
-    else await addCustomer(customer);
+    else {
+      try {
+        await addCustomer(customer);
+      } catch (e) {
+        if (e === 409) window.alert("User already exists");
+        else window.alert("Something went wrong");
+      }
+    }
 
     setCustomer({ name: "", email: "", password: "" });
     setSelectedCustomer();
@@ -28,23 +36,33 @@ const CustomerForm = ({
       .then((data) => setCustomers(data));
   };
 
-  const handleCancel = () => {
+  const resetState = () => {
     setCustomer({ name: "", email: "", password: "" });
     setSelectedCustomer();
   };
 
-  const handleDelete = async () => {
+  const handleCancel = (e) => {
+    e.preventDefault();
+    resetState();
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
     await deleteCustomer(customer._id);
     getCustomers()
       .then((res) => res.json())
       .then((data) => {
-        setCustomers(data), handleCancel();
+        setCustomers(data), resetState();
       });
   };
   return (
     <div className="CustomerForm">
       <form>
-        {selectedCustomer ? <h3>Update {selectedCustomer.name}</h3> : <h3>Add</h3>}
+        {selectedCustomer ? (
+          <h3>Update {selectedCustomer.name}</h3>
+        ) : (
+          <h3>Add</h3>
+        )}
         <div className="mb-3 form-group" controlId="Name">
           <label htmlFor="name">Name</label>
           <input
@@ -84,7 +102,9 @@ const CustomerForm = ({
           />
         </div>
         <div className="button-group">
-          <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
+          <button className="btn btn-success" onClick={handleSubmit}>
+            Submit
+          </button>
           {selectedCustomer ? (
             <button className="btn btn-danger" onClick={handleDelete}>
               Delete

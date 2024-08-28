@@ -4,12 +4,14 @@ const getCustomers = async () => {
 };
 
 const addCustomer = async (customer) => {
-  console.log(customer);
   const response = await fetch("http://localhost:4000/customers", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     body: JSON.stringify(customer),
   });
+  if (response.status === 409) {
+    throw response.status;
+  }
   return response;
 };
 

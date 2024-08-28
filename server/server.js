@@ -54,12 +54,10 @@ app.post("/customers", async function (req, res) {
   if (customer.email) {
     const check = await database.getCustomerByEmail(customer.email);
     if (check) {
-      res.sendStatus(409);
-      return;
+      return res.sendStatus(409);
     }
   } else {
-    res.sendStatus(400);
-    return;
+    return res.sendStatus(400);
   }
 
   try {
