@@ -9,7 +9,7 @@ const addCustomer = async (customer) => {
     method: "POST",
     body: JSON.stringify(customer),
   });
-  if (response.status === 409) {
+  if (!response.ok) {
     throw response.status;
   }
   return response;
