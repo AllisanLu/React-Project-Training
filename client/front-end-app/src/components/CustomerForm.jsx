@@ -108,14 +108,14 @@ const CustomerForm = ({
           <button className="btn btn-success" onClick={handleSubmit}>
             Submit
           </button>
+          <button className="btn btn-warning" onClick={handleCancel}>
+            Cancel
+          </button>
           {selectedCustomer ? (
             <button className="btn btn-danger" onClick={handleDelete}>
               Delete
             </button>
           ) : null}
-          <button className="btn btn-secondary" onClick={handleCancel}>
-            Cancel
-          </button>
         </div>
       </form>
     </div>

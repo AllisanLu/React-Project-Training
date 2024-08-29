@@ -15,4 +15,21 @@
   & .click-customer {
     cursor: pointer;
   }
+
+  & .table-horizontal {
+    width: 90%;
+    overflow-x: auto;
+  }
+
+  & .table-wrapper {
+    max-height: 250px;
+    overflow-y: auto;
+    display: block;
+  }
+
+  table thead tr th {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+  }
 }

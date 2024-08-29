@@ -9,7 +9,7 @@ const CustomerList = ({ customers, selectedCustomer, setSelectedCustomer }) => {
   return (
     <div className="CustomerList">
       <h3>Customers</h3>
-      <div className="table-responsive">
+      <div className="table-wrapper">
         <table className="table table-striped">
           <thead className="thead-dark">
             <tr>
@@ -18,7 +18,7 @@ const CustomerList = ({ customers, selectedCustomer, setSelectedCustomer }) => {
               <th>Pass</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table-horizontal">
             {customers.map((cust, id) => {
               return (
                 <tr
